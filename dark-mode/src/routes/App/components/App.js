@@ -4,16 +4,35 @@ import { faMoon } from '@fortawesome/free-solid-svg-icons';
 import '../styles/_app.scss';
 
 function App() {
+  const [theme, setTheme]= useState("light")
+  function themechange() {
+    if (theme=="light"){
+      setTheme("dark")
+    }
+    else{
+      setTheme("light")
+    }
+
+  }
+  const model={
+    light: "app",
+    dark: "dark-mode",
+
+  }
+  const Icon={
+    light: faMoon,
+    dark: faSun,
+  }
   return (
-    <div className="app">
+    <div className={model[theme]}>
       <div className="level">
         <div>
           <h1 className="title">Dark Mode Challenge</h1>
         </div>
 
         {/* --The button that should toggle dark mode-- */}
-        <button className="app__dark-mode-btn icon level-right">
-          <FontAwesomeIcon icon={faMoon} />
+        <button className="app__dark-mode-btn icon level-right" onClick={themechange}>
+          <FontAwesomeIcon icon={Icon[theme]} />
         </button>
 
       </div>
